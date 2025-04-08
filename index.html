@@ -7,30 +7,29 @@
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
 
 <script>
-  mapboxgl.accessToken = 'pk.eyJ1IjoiaWFteW5tMSIsImEiOiJjbTk2cDB1N3MxajgyMmlzOHlqYTF2azZkIn0.V9hW--r158RVkU9FBiXmuQ'; // التوكن تم إضافته
+  mapboxgl.accessToken = 'pk.eyJ1IjoiaWFteW5tMSIsImEiOiJjbTk2cDB1N3MxajgyMmlzOHlqYTF2azZkIn0.V9hW--r158RVkU9FBiXmuQ';
 
   const map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11', // ستايل الشوارع العادي
-    center: [39.6125, 24.4545], // مركز الخريطة بين النقاط
-    zoom: 13 // الزوم المناسب
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [39.6125, 24.4545],
+    zoom: 13
   });
 
-  // إضافة الرابط إلى زر "رجوع"
   document.getElementById('backButton').addEventListener('click', function() {
-    window.location.href = "https://www.figma.com/proto/OxGXEXOKJRcNAttlniSDPY/waqf-map?node-id=13-3&t=xjCgwYFCHPYHpNKV-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1"; // رابط العودة إلى صفحة Figma
+    window.location.href = "https://chocolate-core-810452.framer.app/";
   });
 
   const waqfLocations = [
     {
       title: "مسجد قباء",
       coords: [39.6167, 24.4442],
-      link: "https://lower-support-321241.framer.app/waqf2" // رابط تفاصيل مسجد قباء
+      link: "https://framer.com/projects/waqfmap--5tScA6xhwUZO6n9ZXiqf-7gxDf?node=augiA20Il"
     },
     {
       title: "مسجد الغمامة",
       coords: [39.6083, 24.4649],
-      link: "https://lower-support-321241.framer.app/waqf1" // رابط تفاصيل مسجد الغمامة
+      link: "https://framer.com/projects/waqfmap--5tScA6xhwUZO6n9ZXiqf-7gxDf?node=augiA20Il"
     }
   ];
 
@@ -38,9 +37,12 @@
     const marker = new mapboxgl.Marker()
       .setLngLat(waqf.coords)
       .setPopup(new mapboxgl.Popup().setHTML(`
-        <div style="font-family: sans-serif; text-align: right;">
-          <h3>${waqf.title}</h3>
-          <a href="${waqf.link}" target="_blank" style="color: #007AFF;">عرض التفاصيل</a>
+        <div style="font-family: sans-serif; text-align: right; max-width: 250px;">
+          <h3 style="margin: 0 0 10px;">${waqf.title}</h3>
+          <a href="${waqf.link}" target="_blank" style="font-size: 16px; color: #007AFF; text-decoration: none; display: flex; align-items: center;">
+            <span>انتقل إلى التفاصيل</span>
+            <span style="margin-left: 5px; font-size: 18px; font-weight: bold;">→</span>
+          </a>
         </div>
       `))
       .addTo(map);
