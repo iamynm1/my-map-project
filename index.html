@@ -17,12 +17,12 @@
     {
       title: "مسجد قباء",
       coords: [39.6167, 24.4442],
-      link: "/waqf2"
+      link: "https://lower-support-321241.framer.app/waqf2" // رابط تفاصيل مسجد قباء
     },
     {
       title: "مسجد الغمامة",
       coords: [39.6083, 24.4649],
-      link: "/waqf2"
+      link: "https://lower-support-321241.framer.app/waqf1" // رابط تفاصيل مسجد الغمامة
     }
   ];
 
@@ -32,7 +32,7 @@
       .setPopup(new mapboxgl.Popup().setHTML(`
         <div style="font-family: sans-serif; text-align: right;">
           <h3>${waqf.title}</h3>
-          <a href="${waqf.link}" style="color: #007AFF;">عرض التفاصيل</a>
+          <a href="${waqf.link}" target="_blank" style="color: #007AFF;">عرض التفاصيل</a>
         </div>
       `))
       .addTo(map);
