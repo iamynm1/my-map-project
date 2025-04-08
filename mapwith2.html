@@ -1,0 +1,40 @@
+<div id="map" style="width: 100%; height: 100%; border-radius: 12px;"></div>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoiaWFteW5tMSIsImEiOiJjbTk2cDB1N3MxajgyMmlzOHlqYTF2azZkIn0.V9hW--r158RVkU9FBiXmuQ'; // التوكن تم إضافته
+
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11', // ستايل الشوارع العادي
+    center: [39.6125, 24.4545], // مركز الخريطة بين النقاط
+    zoom: 13 // الزوم المناسب
+  });
+
+  const waqfLocations = [
+    {
+      title: "مسجد قباء",
+      coords: [39.6167, 24.4442],
+      link: "/waqf2"
+    },
+    {
+      title: "مسجد الغمامة",
+      coords: [39.6083, 24.4649],
+      link: "/waqf2"
+    }
+  ];
+
+  waqfLocations.forEach(waqf => {
+    const marker = new mapboxgl.Marker()
+      .setLngLat(waqf.coords)
+      .setPopup(new mapboxgl.Popup().setHTML(`
+        <div style="font-family: sans-serif; text-align: right;">
+          <h3>${waqf.title}</h3>
+          <a href="${waqf.link}" style="color: #007AFF;">عرض التفاصيل</a>
+        </div>
+      `))
+      .addTo(map);
+  });
+</script>
